@@ -1,0 +1,6 @@
+{
+  "Upload_Headportrait": "http://localhost/oxygen_chat/Ajax/Public/Upload.php",
+  "Insert_user":"http://localhost/oxygen_chat/Ajax/Public/User.php",
+  "Porject_url": "http://localhost/oxygen_chat",
+  "land_user":"http://localhost/oxygen_chat/Ajax/Public/User.php"
+}

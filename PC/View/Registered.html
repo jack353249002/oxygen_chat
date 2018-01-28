@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="Public/css/bootstrap.css"></link>
+    <link rel="stylesheet" type="text/css" href="Public/Plug-in/webuploader-0.1.5/jekyll/css/webuploader.css">
+    <script src="Public/js/jquery-3.0.0.js"></script>
+    <script src="Public/js/Registered/init.js"></script>
+    <script src="Public/js/Registered/save.js"></script>
+    <script src="Public/Plug-in/webuploader-0.1.5/jekyll/js/webuploader.js"></script>
+    <script src="Public/js/Registered/Upload.js"></script>
+    <style>
+        body{
+            background: #5dd5c8;
+        }
+        .land-box{
+            background: #ffffff;
+            position: relative;
+            top: 90px;
+            width: 40%;
+            height: auto;
+            padding-top: 47px;
+            padding-bottom: 47px;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin:0 auto;
+        }
+        .title{
+            color: #5dd5c8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="land-box">
+    <h3 class="title">注册账号</h3>
+    <form id="form" role="form">
+        <div class="form-group">
+            <input type="text" name="nickname" class="form-control" placeholder="用户昵称">
+        </div>
+        <div class="form-group">
+            <input type="password" name="passwords" class="form-control" placeholder="用户密码">
+        </div>
+        <div class="form-group">
+            <label>用户头像</label>
+            <img src="" id="user_img" style="width: 100px;height: 100px;margin-left: 20px"/>
+            <div id="filePicker" style="display: block;float: right;margin-right: 50px;margin-top: 30px">选择图片</div>
+        </div>
+        <div id="myButtons3" class="bs-example" style="text-align: center">
+            <button onclick="save()" type="button" class="btn btn-primary"
+                    data-loading-text="Loading...">注册
+            </button>
+        </div>
+        <input type="hidden" value="" name="headportrait">
+    </form>
+</div>
+</body>
+</html>
