@@ -9,6 +9,8 @@
 		<script src="Public/js/cookie.js"></script>
 		<script src="Public/js/index/init.js"></script>
 		<script src="Public/js/Management/Haveland.js"></script>
+		<script src="Public/js/vue.min.js"></script>
+		<script src="Public/js/index/loadmenu.js"></script>
 		<style>
 			.list-group li{
 				margin-top: 20px;
@@ -23,7 +25,7 @@
 					<a class="navbar-brand" href="#">氧气聊天室</a>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">创建房间</a></li>
+					<li><a href="CreateHouse.php">创建房间</a></li>
 					<li><a href="#">欢迎:</a></li>
 					<li><a href="#" id="user_name"></a></li>
 					<li><a href="#" onclick="exit()">退出</a></li>
@@ -31,16 +33,18 @@
 			</div>
 		</nav>
 	    <div class="container">
-			<ul class="list-group">
-				<li class="list-group-item">免费域名注册
-					<span style="float: right;font-size: 12px">2017-12-23</span>
-					<div style="height: 20px;margin-top: 15px" class="container">
-						<span style="font-size: 12px;">在线人数:</span>10
-						<div id="myButtons1" style="float: right;margin-top: -10px;margin-right: -20px" class="bs-example">
-							<button type="button" class="btn btn-primary">开始讨论</button>
+			<ul id="house-list" class="list-group">
+				<template v-for="foo in infor">
+					<li class="list-group-item">{{ foo.name }}
+						<!--<span style="float: right;font-size: 12px">2017-12-23</span>-->
+						<div style="height: 20px;margin-top: 15px" class="container">
+							<span style="font-size: 12px;">在线人数:</span>10
+							<div id="myButtons1" style="float: right;margin-top: -10px;margin-right: -20px" class="bs-example">
+								<button type="button" class="btn btn-primary">开始讨论</button>
+							</div>
 						</div>
-					</div>
-				</li>
+					</li>
+				</template>
 			</ul>
 		</div>
 	</body>

@@ -7,7 +7,7 @@
  */
 
 namespace DataOperation;
-
+header ( "Content-type:text/html;charset=utf-8" );
 use DataOperation\BuildSql;
 class SqlCommand
 {
@@ -34,7 +34,7 @@ class SqlCommand
             return array(
                 'type_id'=>1,
                 'msg'=>"执行成功!",
-                'data'=>$obj->fetch_array()
+                'data'=>$this->sendtoarray($obj)
             );
         }
     }
@@ -55,7 +55,7 @@ class SqlCommand
                return array(
                    'type_id'=>0,
                    'msg'=>"查询成功!",
-                   'data'=>$obj->fetch_array()
+                   'data'=>$this->sendtoarray($obj)
                );
            }
     }
@@ -82,7 +82,8 @@ class SqlCommand
         {
             return array(
                 'type_id'=>1,
-                'msg'=>"添加成功!"
+                'msg'=>"添加成功!",
+                'data'=> mysqli_insert_id($this->get_linkobj())
             );
         }
     }
@@ -124,6 +125,14 @@ class SqlCommand
                 'msg'=>"删除成功!"
             );
         }
+    }
+    private function sendtoarray($obj) //返回成数组集合
+    {
+        $array=array();
+        while($row=$obj->fetch_array()){
+           $array[]=$row;
+        }
+        return $array;
     }
     private function get_linkobj() //获取连接对象
     {

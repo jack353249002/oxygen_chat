@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2018/1/11
- * Time: 20:35
+ * Date: 2018/1/30
+ * Time: 20:37
  */
-include_once ("operate/User.php");
+include_once ("operate/House.php");
 include_once ("../../Common/CommonFunction.php");
 $db_conf=include_once("../Conf/DB.php");
 $redis_conf=include_once("../Conf/Redis.php");
-use operate\User;
+use operate\House;
 $Class=$_GET["Class"];
 $Function=$_GET["Function"];
 $Data=$_GET["Data"];
@@ -19,4 +19,3 @@ $method = $ref_class->getmethod($Function); //获取指定方法
 $method->setAccessible(true); //设置访问权限
 $json=$method->invoke($instance,$Data); //执行方法(传递参数)
 echo json_encode($json);
-

@@ -1,21 +1,74 @@
 window.user_infor=null;
 window.cookie_obj=null;
+window.User=null;
+window.House=null;
 $(document).ready(function () {
-    get_user();
     init();
+    get_user();
 })
 /*获取用户信息*/
 function  get_user() {
    window.cookie_obj= new w_cookie();
-   var json_obj=JSON.parse(cookie_obj.getvalue("user_infor"));
-   window.user_infor=json_obj;
+   var token=cookie_obj.getvalue("token");
+   get_user_infor(token);
 }
 /*初始化*/
 function  init() {
-    $('#user_name').html(window.user_infor.nickname);
+    $.ajax({
+        url:"Public/js/url_conf.json",
+        dataType:"json",
+        async:false,
+        success:function(json){
+            window.User=json.User;
+            window.House=json.House;
+            loadmenu();
+        }
+    });
 }
 /*退出登录*/
 function  exit() {
-    cookie_obj.setvalue("user_infor","",-1);
+    var token=cookie_obj.getvalue("token");
+    cookie_obj.setvalue("token","",-1);
+    delete_reids_token(token);
     window.location.href="Land.php";
+}
+/*获取用户信息*/
+function  get_user_infor(token) {
+    $.ajax({
+        url:window.User,
+        dataType:"json",
+        type:"GET",
+        data:{
+            "Class": "User",
+            "Function": "get_userinfor",
+            "Data": token
+        },
+        async:true,
+        success:function(result){;
+            if(result.type_id==0) {
+                alert(result.msg);
+            }
+            else if(result.type_id==1)
+            {
+                var user_infor=JSON.parse(result.data);
+                $('#user_name').html(user_infor[0].nickname);
+            }
+        }
+    });
+}
+/*删除reids信息*/
+function   delete_reids_token(token) {
+    $.ajax({
+        url:window.User,
+        type:"GET",
+        data:{
+            "Class": "User",
+            "Function": "delete_reids_token",
+            "Data": token
+        },
+        async:true,
+        success:function(result){
+
+        }
+    });
 }

@@ -29,4 +29,8 @@ class CommonFunction
            return $returnurl;
        }
    }
+   static function Create_Token()  //生成令牌
+   {
+      return md5(time() . mt_rand(1,1000000));
+   }
 }

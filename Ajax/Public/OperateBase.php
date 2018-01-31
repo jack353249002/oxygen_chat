@@ -15,4 +15,8 @@ class OperateBase
     {
         return json_decode($json,true);
     }
+    protected  function  array_to_json($array)
+    {
+        return json_encode($array);
+    }
 }

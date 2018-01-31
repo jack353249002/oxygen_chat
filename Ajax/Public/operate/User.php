@@ -11,14 +11,19 @@ include_once("../../DataOperation/DB.php");
 include_once("../../DataOperation/SqlCommand.php");
 include_once ("OperateBase.php");
 use  DataOperation\DB;
-use DataOperation\BuildSql;
 use DataOperation\SqlCommand;
 use operate\OperateBase;
+use Common\CommonFunction;
 class User extends OperateBase
 {
     private $db;
+    private $redis;
     public function  __construct(){
-        $this->db=new DB("localhost","root","","oxygen_chat");
+        global $db_conf;
+        global $redis_conf;
+        $this->db=new DB($db_conf["server"],$db_conf["user_name"],$db_conf["passwords"],$db_conf["db_name"]);
+        $this->redis=new \Redis();
+        $this->redis->connect($redis_conf["server"],$redis_conf["port"]);
     }
     public function insert($data){  //账号注册
         $user=$this->json_to_array($data);
@@ -30,7 +35,8 @@ class User extends OperateBase
             if ($infor) {
                 return array(
                     'type_id' => 1,
-                    'msg' => '注册成功!'
+                    'msg' => '注册成功!',
+                    'data'=> $infor["data"]
                 );
             } else {
                 return array(
@@ -59,10 +65,12 @@ class User extends OperateBase
         $dbarray=$array["data"];
         if(count($dbarray)!=0)
         {
+            $token=CommonFunction::Create_Token();
+            $this->putuser_in_redis($dbarray,$token);
             return array(
                 'type_id'=>1,
                 'msg'=>'登录成功!',
-                'data'=>$dbarray
+                'data'=>$token
             );
         }
         else
@@ -73,12 +81,53 @@ class User extends OperateBase
             );
         }
     }
-    /*将信息放入缓存*/
-    private function put_in_redis($array){
-        $redis=new Redis();
-        $redis->connect('127.0.0.1',6379);
-        $id= $array["id"];
-        $nickname=$array[""];
+    /*获取用户信息*/
+    public  function  get_userinfor($token){
+        $sen_token=$this->getuser_in_reids($token);
+        if($sen_token==null || $sen_token=="")
+        {
+            return array(
+                'type_id' => 0,
+                'msg' => '令牌错误!'
+            );
+        }
+        else
+        {
+            return array(
+                'type_id' => 1,
+                'data' => $sen_token
+            );
+        }
+    }
+    public function delete_token($token){
+        if($this->delete_reids_token($token))
+        {
+            return array(
+                'type_id' => 1,
+                'msg' => '成功!'
+            );
+        }
+        else
+        {
+            return array(
+                'type_id' => 0,
+                'msg' => '失败!'
+            );
+        }
+    }
+    /*将用户信息放入缓存*/
+    private function putuser_in_redis($array,$token){
+
+        $this->redis->hSet('session',$token,$this->array_to_json($array));
+        return true;
+    }
+    /*取出redis缓存*/
+    private function getuser_in_reids($token){
+       return $this->redis->hGet('session',$token);
+    }
+    /*删除用户redis会话信息*/
+    private  function delete_reids_token($token){
+        $this->redis->hDel('session',$token);
         return true;
     }
 }

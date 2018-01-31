@@ -25,6 +25,7 @@ class DB
         $this->passwords = $passwords;
         $this->db_name = $db_name;
         $this->linkobj = mysqli_connect($this->address, $this->user_name, $this->passwords, $this->db_name);
+        mysqli_query($this->linkobj,'set names utf8'); //将编码转为utf8格式，防止出现乱码
     }
     public function close() //关闭数据库
     {

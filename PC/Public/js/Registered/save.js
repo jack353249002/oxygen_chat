@@ -5,7 +5,7 @@ function save() {
     var json= {"nickname": nickname, "headportrait": headportrait, "passwords": passwords};
     jsonstr= JSON.stringify(json);
     $.ajax({
-            url:window.insert_user,
+            url:window.User,
             type:"GET",
             data:{
                 "Class": "User",

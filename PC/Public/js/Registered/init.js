@@ -1,4 +1,4 @@
-window.insert_user="";
+window.User="";
 window.upload_url="";
 $(document).ready(function () {
     init();
@@ -7,7 +7,7 @@ $(document).ready(function () {
 function  init() {
     $.getJSON("Public/js/url_conf.json", function(json){
         window.upload_url=json.Upload_Headportrait;
-        window.insert_user=json.Insert_user;
+        window.User=json.User;
         create_upload(json.Porject_url);
     });
 }

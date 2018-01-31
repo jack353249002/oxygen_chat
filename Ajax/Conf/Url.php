@@ -8,5 +8,5 @@
 return array(
     'Project_url'=>$_SERVER["DOCUMENT_ROOT"]."/oxygen_chat",
     'Headportrait_url'=>$_SERVER["DOCUMENT_ROOT"]."/oxygen_chat/Upload/Headportrait",
-    'ROOT'=>"http://localhost:801/oxygen_chat"
+    'ROOT'=>"http://localhost/oxygen_chat"
 );
