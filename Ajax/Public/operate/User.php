@@ -18,14 +18,16 @@ class User extends OperateBase
 {
     private $db;
     private $redis;
-    public function  __construct(){
+    public function  __construct()
+    {
         global $db_conf;
         global $redis_conf;
         $this->db=new DB($db_conf["server"],$db_conf["user_name"],$db_conf["passwords"],$db_conf["db_name"]);
         $this->redis=new \Redis();
         $this->redis->connect($redis_conf["server"],$redis_conf["port"]);
     }
-    public function insert($data){  //账号注册
+    public function insert($data)
+    {  //账号注册
         $user=$this->json_to_array($data);
         $sqlcommand= new SqlCommand("user",$this->db);
         $array=$sqlcommand->select("*","nickname='{$user['nickname']}'");
@@ -53,10 +55,12 @@ class User extends OperateBase
             );
         }
     }
-    public  function  delete(){
+    public  function  delete()
+    {
 
     }
-    public  function land($data){  //用户登录
+    public  function land($data)
+    {  //用户登录
         $user=$this->json_to_array($data);
         $name=$user["nickname"];
         $passwords=$user["passwords"];
@@ -82,7 +86,8 @@ class User extends OperateBase
         }
     }
     /*获取用户信息*/
-    public  function  get_userinfor($token){
+    public  function  get_userinfor($token)
+    {
         $sen_token=$this->getuser_in_reids($token);
         if($sen_token==null || $sen_token=="")
         {
@@ -116,17 +121,20 @@ class User extends OperateBase
         }
     }
     /*将用户信息放入缓存*/
-    private function putuser_in_redis($array,$token){
+    private function putuser_in_redis($array,$token)
+    {
 
         $this->redis->hSet('session',$token,$this->array_to_json($array));
         return true;
     }
     /*取出redis缓存*/
-    private function getuser_in_reids($token){
+    private function getuser_in_reids($token)
+    {
        return $this->redis->hGet('session',$token);
     }
     /*删除用户redis会话信息*/
-    private  function delete_reids_token($token){
+    private  function delete_reids_token($token)
+    {
         $this->redis->hDel('session',$token);
         return true;
     }

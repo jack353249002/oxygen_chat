@@ -18,7 +18,8 @@ class House extends OperateBase
 {
     private $db;
     private $redis;
-    public function  __construct(){
+    public function  __construct()
+    {
         global $db_conf;
         global $redis_conf;
         $this->db=new DB($db_conf["server"],$db_conf["user_name"],$db_conf["passwords"],$db_conf["db_name"]);
@@ -26,7 +27,8 @@ class House extends OperateBase
         $this->redis->connect($redis_conf["server"],$redis_conf["port"]);
     }
     /*获取所有房间*/
-    public function get_house($data){
+    public function get_house($data)
+    {
         $sqlcommand= new  SqlCommand("house",$this->db);
         $array=$sqlcommand->select("*","1");
         $dbarray=$array["data"];
@@ -36,7 +38,8 @@ class House extends OperateBase
         );
     }
     /*创建房间*/
-    public function create_house($data){
+    public function create_house($data)
+    {
         $house=$this->json_to_array($data);
         $house_insert["name"]=$house["name"];
         $house_insert["userid"]=$this->getuser_in_reids_id($house["token"]);
@@ -67,7 +70,8 @@ class House extends OperateBase
         }
     }
     /*取出redis缓存*/
-    private function getuser_in_reids_id($token){
+    private function getuser_in_reids_id($token)
+    {
         $json= $this->redis->hGet('session',$token);
         $array=$this->json_to_array($json);
         return $array[0]["id"];
