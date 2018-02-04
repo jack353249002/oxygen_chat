@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="PC/Public/js/jquery-3.0.0.js"></script>
+    <input type="text" style="width: 150px"/>
+    <button style="width: 100px;height: 50px;" onclick="send()">发送</button>
 </head>
 <body>
-<input type="text" id="infor" style="width: 150px"/>
-<button style="width: 100px;height: 50px;" onclick="send()">发送</button>
 <script>
     ws = new WebSocket("ws://127.0.0.1:2345");
     ws.onopen = function() {
         alert("连接成功");
         var data={
             "type_id":1,
-            "house_id":"10"
+            "house_id":"11"
         };
         var json=JSON.stringify(data);
         ws.send(json);
@@ -26,8 +25,7 @@
     function  send() {
         var data2={
             "type_id":2,
-            "house_id":"10",
-            "chat_infor": $('#infor').val()
+            "house_id":"11"
         };
         var json2=JSON.stringify(data2);
         ws.send(json2);
