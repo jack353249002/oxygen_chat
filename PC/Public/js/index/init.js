@@ -72,3 +72,8 @@ function   delete_reids_token(token) {
         }
     });
 }
+/*进入房间*/
+function  movein_house(obj) {
+    var house_id=$(obj).attr("data-id");
+    window.location.href="House.php?house_id="+house_id;
+}

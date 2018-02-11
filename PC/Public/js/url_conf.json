@@ -2,5 +2,6 @@
   "Upload_Headportrait": "http://localhost/oxygen_chat/Ajax/Public/Upload.php",
   "Porject_url": "http://localhost/oxygen_chat",
   "User":"http://localhost/oxygen_chat/Ajax/Public/User.php",
-  "House":"http://localhost/oxygen_chat/Ajax/Public/House.php"
+  "House":"http://localhost/oxygen_chat/Ajax/Public/House.php",
+  "Socket_ip":"ws://127.0.0.1:2345"
 }

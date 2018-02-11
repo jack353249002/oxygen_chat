@@ -38,9 +38,9 @@
 					<li class="list-group-item">{{ foo.name }}
 						<!--<span style="float: right;font-size: 12px">2017-12-23</span>-->
 						<div style="height: 20px;margin-top: 15px" class="container">
-							<span style="font-size: 12px;">在线人数:</span>10
+							<span style="font-size: 12px;">在线人数:</span>?
 							<div id="myButtons1" style="float: right;margin-top: -10px;margin-right: -20px" class="bs-example">
-								<button type="button" class="btn btn-primary">开始讨论</button>
+								<button type="button" class="btn btn-primary" v-bind:data-id="foo.id" onclick="movein_house(this)">开始讨论</button>
 							</div>
 						</div>
 					</li>

@@ -1,0 +1,65 @@
+2018-02-11 14:28:11 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:56
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(56): Redis->hGet('session', '')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(28): getuser_in_reids(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #19)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
+#10 {main}
+2018-02-11 14:49:37 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:56
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(56): Redis->hGet('session', '')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(28): getuser_in_reids('')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #22)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
+#10 {main}
+2018-02-11 15:09:41 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:56
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(56): Redis->hGet('session', '4ab9dcf5ed7ca2d...')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(28): getuser_in_reids('4ab9dcf5ed7ca2d...')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #19)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
+#10 {main}
+2018-02-11 15:10:10 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:56
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(56): Redis->hGet('session', '4ab9dcf5ed7ca2d...')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(28): getuser_in_reids('4ab9dcf5ed7ca2d...')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #19)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
+#10 {main}
+2018-02-11 15:12:52 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:56
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(56): Redis->hGet('session', '9cee7004f662d4c...')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(28): getuser_in_reids('9cee7004f662d4c...')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #19)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
+#10 {main}
