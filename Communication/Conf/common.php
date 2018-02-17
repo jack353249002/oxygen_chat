@@ -11,5 +11,6 @@ return array(
     'socket_name'=>'websocket://0.0.0.0:2345', //服务器Ip
     'Db'=>'E:\wamp64\www\oxygen_chat\Communication\Db\Connection.php',//Db连接类
     'redis_server'=>'127.0.0.1',
-    'redis_port'=>'6379'
+    'redis_port'=>'6379',
+    'Root_URL'=>'http://localhost/oxygen_chat/'
 );

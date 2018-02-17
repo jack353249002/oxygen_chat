@@ -43,8 +43,8 @@ function  get_user_infor(token) {
             "Function": "get_userinfor",
             "Data": token
         },
-        async:true,
-        success:function(result){;
+        async:false,
+        success:function(result){
             if(result.type_id==0) {
                 alert(result.msg);
             }

@@ -4,8 +4,10 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script src="Public/js/jquery-3.0.0.js"></script>
+		<script src="Public/js/vue.min.js"></script>
 		<script src="Public/js/cookie.js"></script>
 		<script src="Public/js/House/init.js"></script>
+		<script src="Public/js/Management/Haveland.js"></script>
 		<link rel="stylesheet" href="Public/css/bootstrap.css"></link>
 		<link rel="stylesheet" href="Public/css/information_box.css"></link>
 		<style>
@@ -15,6 +17,7 @@
 				border-style: solid;
 				width: 500px;
 				height: 500px;
+				overflow-y: auto;
 			}
 			#send{
 				width: 500px;
@@ -41,43 +44,31 @@
 				width: 250px;
 				margin-left: 30px;
 				height: 620px;
+				overflow-y: auto;
 			}
 		</style>
 	</head>
 	<body>
 	   <div id="left">
 			<div id="list">
-				<div class="infor-row">
-					<div class="head-left" style="background: red;">
-						
-					</div>
-					<div class="text-infor-left">
-						dfasgag
-					</div>
-				</div>
-				<div class="infor-row">
-					<div class="head-right" style="background: red;">
-						
-					</div>
-					<div class="text-infor-right">
-						dfasgag
-					</div>
-				</div>
+
 			</div>
 			<div id="send">
-				<textarea></textarea>
-				<input type="button" value="发送" />
+				<textarea id="infor"></textarea>
+				<input type="button" value="发送" onclick="send()" />
 			</div>
 		</div>
 		<div id="right">
-			<div class="infor-row">
+			<template v-for="foo in infor">
+				<div  class="infor-row">
 					<div class="head-left" style="background: red;">
-						
+
 					</div>
 					<div class="text-infor-left">
-						dfasgag
+						 {{foo.nickname}}
 					</div>
-			</div>
+				</div>
+			</template>
 		</div>
 	    <input id="houseid" type="hidden" value="<?php echo $_GET['house_id']?>">
 	</body>

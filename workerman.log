@@ -63,3 +63,17 @@ Stack trace:
 #8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
 #9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(43): Workerman\Worker::runAll()
 #10 {main}
+2018-02-17 07:28:12 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in E:\wamp64\www\oxygen_chat\workerman\Protocols\Websocket.php:225
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(313): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(79): Workerman\Connection\TcpConnection->send(Array)
+#2 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(50): send_information_all('17', Array)
+#3 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":2,"h...')
+#4 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":2,"h...')
+#5 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #21)
+#6 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#9 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#10 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(73): Workerman\Worker::runAll()
+#11 {main}

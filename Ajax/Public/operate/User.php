@@ -123,7 +123,6 @@ class User extends OperateBase
     /*将用户信息放入缓存*/
     private function putuser_in_redis($array,$token)
     {
-
         $this->redis->hSet('session',$token,$this->array_to_json($array));
         return true;
     }
