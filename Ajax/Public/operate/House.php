@@ -69,6 +69,23 @@ class House extends OperateBase
             );
         }
     }
+    /*获取房间的历史记录*/
+    public function get_infor_old($data)
+    {
+        $infor_array=$this->json_to_array($data);
+        $house_id=$infor_array["house_id"];
+        $sqlcommand= new  SqlCommand("house",$this->db);
+        $house_array=$sqlcommand->query("SELECT *, a.id AS content_key FROM content AS a JOIN user AS b ON a.houseid={$house_id} AND a.userid=b.id");
+        $conf=include_once("../Conf/Url.php");
+        foreach($house_array["data"] as &$value)
+        {
+            $value["headportrait"] = $conf["ROOT"] . '/' . $value["headportrait"];
+        }
+        return array(
+            'type_id'=>1,
+            'data'=>$house_array["data"]
+        );
+    }
     /*取出redis缓存*/
     private function getuser_in_reids_id($token)
     {

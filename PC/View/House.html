@@ -51,7 +51,16 @@
 	<body>
 	   <div id="left">
 			<div id="list">
-
+				<template v-for="foo in infor">
+					<div  class="infor-row">
+						<div class="head-left">
+							 <img v-bind:src="foo.headportrait"/>
+						</div>
+						<div class="text-infor-left">
+							{{foo.body}}
+						</div>
+					</div>
+				</template>
 			</div>
 			<div id="send">
 				<textarea id="infor"></textarea>

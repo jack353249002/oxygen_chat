@@ -66,7 +66,7 @@ class User extends OperateBase
         $passwords=$user["passwords"];
         $sqlcommand= new  SqlCommand("user",$this->db);
         $array=$sqlcommand->select("*","nickname='{$name}' AND passwords='{$passwords}'");
-        $dbarray=$array["data"];
+        $dbarray=$array["data"][0];
         if(count($dbarray)!=0)
         {
             $token=CommonFunction::Create_Token();

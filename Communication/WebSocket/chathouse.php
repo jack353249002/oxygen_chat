@@ -15,6 +15,12 @@ $redis=new \Redis();
 $redis->connect($common_conf["redis_server"],$common_conf["redis_port"]);
 // 启动4个进程对外提供服务
 $http_worker->count = 1;
+$http_worker->onWorkerStart = function($worker)
+{
+    // 将db实例存储在全局变量中(也可以存储在某类的静态成员中)
+    global $db;
+    $db = new Workerman\MySQL\Connection("localhost", "", "root", "", "oxygen_chat");
+};
 $http_worker->onConnect=function($connection) use($http_worker)
 {
    $GLOBALS["server_id"]["{$connection->id}"]=$connection;
@@ -24,6 +30,7 @@ $http_worker->onMessage = function($connection, $data)use($http_worker,$common_c
     $infor=json_decode($data,true);
     $house_id=$infor["house_id"];
     $token=$infor["token"];
+    global $db;
     switch ($infor["type_id"])
     {
         /*进入房间加入数组*/
@@ -32,10 +39,10 @@ $http_worker->onMessage = function($connection, $data)use($http_worker,$common_c
             $connection->house_id=$house_id;
             $GLOBALS["house"]["{$house_id}"][]=$connection;
             $userinfor=json_decode(getuser_in_reids($token),true); //获取用户信息
-            $userinfor[0]["headportrait"]=$common_conf["Root_URL"].$userinfor[0]["headportrait"];
-            $userinfor[0]["server_id"]=$connection->id;
+            $userinfor["headportrait"]=$common_conf["Root_URL"].$userinfor["headportrait"];
+            $userinfor["server_id"]=$connection->id;
             $jsondata["type_id"]=1;
-            $jsondata["data"]=json_encode($userinfor);
+            $jsondata["data"]=$userinfor;
             send_information_removeme($house_id,json_encode($jsondata),$connection->id);
             getnow_house_people($house_id,$connection->id);
             break;
@@ -44,9 +51,13 @@ $http_worker->onMessage = function($connection, $data)use($http_worker,$common_c
             $sendinfor["type_id"]=3;
             $chat_infor["chat_infor"]=$infor["chat_infor"];
             $chat_infor["user_infor"]=json_decode(getuser_in_reids($token),true); //获取用户信息
-            $chat_infor["user_infor"][0]["headportrait"]=$common_conf["Root_URL"].$chat_infor["user_infor"][0]["headportrait"];
-            $sendinfor["data"]=json_encode($chat_infor);
+            $chat_infor["user_infor"]["headportrait"]=$common_conf["Root_URL"].$chat_infor["user_infor"]["headportrait"];
+            $sendinfor["data"]=$chat_infor;
             send_information_all($house_id,json_encode($sendinfor));
+            $insert["houseid"]=$house_id;
+            $insert["userid"]=$chat_infor["user_infor"]["id"];
+            $insert["body"]=$infor["chat_infor"];
+            $insert_id = $db->insert("content")->cols($insert)->query();
             break;
     }
 
@@ -102,13 +113,13 @@ function getnow_house_people($house_id,$now_user_id)
     foreach($GLOBALS["house"]["{$house_id}"] as $people)
     {
         $inforarray=json_decode(getuser_in_reids($people->token),true);
-        $inforarray[0]["headportrait"]= $common_conf["Root_URL"].$inforarray[0]["headportrait"];
-        $inforarray[0]["server_id"]=$people->id;
-        $row["infor"]=json_encode($inforarray);
+        $inforarray["headportrait"]= $common_conf["Root_URL"].$inforarray["headportrait"];
+        $inforarray["server_id"]=$people->id;
+        $row=$inforarray;
         $house_array[]=$row;
     }
     $send_data["type_id"]=2;
-    $send_data["data"]=json_encode($house_array);
+    $send_data["data"]=$house_array;
     $nowobj=$GLOBALS["server_id"]["{$now_user_id}"];
     $nowobj->send(json_encode($send_data));
 }

@@ -51,7 +51,7 @@ function  get_user_infor(token) {
             else if(result.type_id==1)
             {
                 var user_infor=JSON.parse(result.data);
-                $('#user_name').html(user_infor[0].nickname);
+                $('#user_name').html(user_infor.nickname);
             }
         }
     });

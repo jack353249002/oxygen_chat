@@ -1,7 +1,6 @@
 function save() {
-    var cookie_obj= new w_cookie();
     var name=$('#form input[name="name"]').val();
-    var token= cookie_obj.getvalue("token");
+    var token= window.cookie_obj.getvalue('token');
     var passwords=$('#form input[name="passwords"]').val();
     var json= {"name": name, "passwords": passwords,"token":token};
     jsonstr= JSON.stringify(json);
@@ -21,6 +20,8 @@ function save() {
             }
             else
             {
+                alert(infor.msg);
+                window.location.href = "index.php";
             }
         }
     });

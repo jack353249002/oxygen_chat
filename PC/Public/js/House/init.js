@@ -2,8 +2,10 @@ window.Socket_ip="";  //scoketip地址
 window.token="";
 window.cookie_obj=null;
 window.User=null;
+window.House="";
 $(document).ready(function () {
         init();
+        show_infor_old();
         landtosocket();
 })
 function init() {
@@ -17,6 +19,7 @@ function init() {
         success:function(json){
             window.User=json.User;
             window.Socket_ip=json.Socket_ip;
+            window.House=json.House;
         }
     });
 }
@@ -39,8 +42,8 @@ function landtosocket() {
         {
             /*显示新加入用户信息*/
             case 1:
-                var userobj=JSON.parse(infor.data);
-                add_user_list(userobj[0]);
+                var userobj=infor.data;
+                add_user_list(userobj);
                 break;
             /*退出登录时触发*/
             case 0:
@@ -49,16 +52,14 @@ function landtosocket() {
                 break;
             /*加载当前房间用户*/
             case 2:
-                var list=JSON.parse(infor.data);
+                var list=infor.data;
                 for(var i=0;i<list.length;i++)
                 {
-                    var info=JSON.parse(list[i].infor);
-                    add_user_list(info[0]);
+                    add_user_list(list[i]);
                 }
                 break;
             case 3:
-                var infor=JSON.parse(infor.data);
-                show_infor(infor);
+                show_infor(infor.data);
                 break;
         }
     };
@@ -89,9 +90,39 @@ function add_user_list(data) {
 /*显示消息*/
 function show_infor(data) {
     var chat_infor=data.chat_infor;
-    var head=data.user_infor[0].headportrait;
+    var head=data.user_infor.headportrait;
     $('#list').append('<div class="infor-row"> <div class="head-left"><img src="'+head+'"/></div><div class="text-infor-left">'+chat_infor+'</div> </div>');
     $('#infor').val("");
+}
+/*显示旧的消息*/
+function show_infor_old() {
+    var house_id=$('#houseid').val();
+    var obj={
+        "house_id":house_id
+    };
+    var send=JSON.stringify(obj);
+    $.ajax({
+        url:window.House,
+        dataType:"json",
+        type:"GET",
+        data:{
+            "Class": "House",
+            "Function": "get_infor_old",
+            "Data": send
+        },
+        async:true,
+        success:function(json){
+            /*for(var i=0;i<json.data.length;i++){
+                console.log(json.data[i].headportrait);
+            }*/
+            new Vue({
+                el: '#list',
+                data: {
+                    infor: json.data
+                }
+            })
+        }
+    });
 }
 /*token验证*/
 function validation_token() {
