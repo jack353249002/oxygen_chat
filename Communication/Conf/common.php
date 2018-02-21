@@ -12,5 +12,10 @@ return array(
     'Db'=>'E:\wamp64\www\oxygen_chat\Communication\Db\Connection.php',//Db连接类
     'redis_server'=>'127.0.0.1',
     'redis_port'=>'6379',
-    'Root_URL'=>'http://localhost/oxygen_chat/'
+    'Root_URL'=>'http://localhost/oxygen_chat/',
+    'DB_host'=>'localhost',
+    'DB_port'=>'',
+    'DB_user'=>'root',
+    'DB_password'=>'',
+    'DB_name'=>'oxygen_chat'
 );

@@ -5,10 +5,11 @@
  * Date: 2018/1/13
  * Time: 20:32
  */
-include_once ("OperateBase.php");
-include_once ("../../Common/CommonFunction.php");
+header("Access-Control-Allow-Origin: *");
+require_once ("OperateBase.php");
+require_once ("../../Common/CommonFunction.php");
+require_once ("operate/Upload.php");
 $conf= include_once ("../Conf/Url.php");
-include_once ("operate/Upload.php");
 use operate\Upload;
 use Common\CommonFunction;
 $Class=$_POST["Class"];

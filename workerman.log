@@ -77,3 +77,29 @@ Stack trace:
 #9 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
 #10 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(73): Workerman\Worker::runAll()
 #11 {main}
+2018-02-19 13:35:12 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:106
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(106): Redis->hGet('session', 'd66481d3a9b2c50...')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(41): getuser_in_reids('d66481d3a9b2c50...')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #21)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(82): Workerman\Worker::runAll()
+#10 {main}
+2018-02-20 16:09:43 exception 'RedisException' with message 'Redis server went away' in E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php:107
+Stack trace:
+#0 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(107): Redis->hGet('session', '95662c8643d2dd1...')
+#1 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(42): getuser_in_reids('95662c8643d2dd1...')
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#3 E:\wamp64\www\oxygen_chat\workerman\Connection\TcpConnection.php(632): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"type_id":1,"h...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #21)
+#5 E:\wamp64\www\oxygen_chat\workerman\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 E:\wamp64\www\oxygen_chat\workerman\Worker.php(856): Workerman\Events\Select->loop()
+#7 E:\wamp64\www\oxygen_chat\workerman\Worker.php(473): Workerman\Worker->run()
+#8 E:\wamp64\www\oxygen_chat\workerman\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 E:\wamp64\www\oxygen_chat\Communication\WebSocket\chathouse.php(83): Workerman\Worker::runAll()
+#10 {main}

@@ -7,9 +7,9 @@
  */
 
 namespace operate;
-include_once("../../DataOperation/DB.php");
-include_once("../../DataOperation/SqlCommand.php");
-include_once ("OperateBase.php");
+require_once("../../DataOperation/DB.php");
+require_once("../../DataOperation/SqlCommand.php");
+require_once ("OperateBase.php");
 use  DataOperation\DB;
 use DataOperation\SqlCommand;
 use operate\OperateBase;
