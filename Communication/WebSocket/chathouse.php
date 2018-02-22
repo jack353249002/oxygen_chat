@@ -5,12 +5,11 @@
  * Date: 2018/2/2
  * Time: 22:13
  */
-$common_conf=include_once("E:\wamp64\www\oxygen_chat\Communication\Conf\common.php");
+$common_conf=include_once(Conf_url);
 require_once($common_conf["workerman_url"]);
 require_once($common_conf["Db"]);
 use Workerman\Worker;
 use Workerman\Lib\Timer;
-define('HEARTBEAT_TIME', 25);
 // 创建一个Worker监听2345端口，使用http协议通讯
 $http_worker = new Worker($common_conf["socket_name"]);
 $redis=new \Redis();
